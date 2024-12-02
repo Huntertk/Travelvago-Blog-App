@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs", 
+    "outDir": "./dist", 
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                           
+    "noUnusedLocals": true,
+    "skipLibCheck": true,                               
+  },
+  "include": ["src/**/*", "src/**/*.*"]
+}
