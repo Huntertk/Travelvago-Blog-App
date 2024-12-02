@@ -85,12 +85,13 @@ header{
                 transition: all 0.3s ease-in-out;
                 font-weight: 400;
                 position: relative;
+                color: $primary;
                 &::after{
                     content: "";
                     width: 0%;
                     height: 3px;
                     border-radius: 14px;
-                    background-color: #000;
+                    background-color: $primary;
                     position: absolute;
                     bottom: 0px;
                     right: 0px;
