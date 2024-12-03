@@ -1,0 +1,9 @@
+@use './variable.scss' as *;
+
+.recent_post_container{
+    > h3{
+        font-size: 1rem;
+        font-weight: 400;
+        color: #5b5b5b;
+    }
+}
