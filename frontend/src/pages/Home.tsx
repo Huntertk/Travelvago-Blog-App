@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FilterBar from '../components/home/FilterBar';
 import Hero from '../components/home/Hero';
 import '../styles/home.scss';
+import FeaturedPost from '../components/home/FeaturedPost';
 
 const Home = () => {
   const [filter, setFilter] = useState<string>("all posts");
@@ -18,6 +19,7 @@ const Home = () => {
         handleFilter={handleFilter}
         categories={categories}
       />
+      <FeaturedPost />
     </div>
   )
 }
