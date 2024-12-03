@@ -37,12 +37,13 @@
                     margin-top: 5px;
                     >p{
                         color: #5b5b5b;
+                        font-size: 0.8rem;
                     }
                 }
                 >h1{
                     font-weight: 400;
                     margin-top: 0.5rem;
-                    font-size: 1.2rem;
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -80,12 +81,13 @@
                     margin-top: 5px;
                     >p{
                         color: #5b5b5b;
+                        font-size: 0.8rem;
                     }
                 }
                 >h1{
                     font-weight: 400;
                     margin-top: 0.5rem;
-                    font-size: 1.2rem;
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -96,7 +98,16 @@
     .featured_post_container{
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-        align-items: center;
+        > .featured_post_wrapper_one{
+
+            > .featured_post{
+                > .featured_post_content{
+                    > h1{
+                        font-size: 1.3rem;
+                    }
+                } 
+            }
+        }
         
         > .featured_post_wrapper_two{
             > .featured_post{
@@ -105,7 +116,9 @@
                 > .feature_post_img{
 
                     > img{
-                        width: 200px;
+                        object-fit: cover;
+                        width: 300px;
+                        height: 150px;
                     }
                 }
 
