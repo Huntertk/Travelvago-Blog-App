@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/assets/styles/featuredPost.css">
     <link rel="stylesheet" href="/assets/styles/post.css">
     <link rel="stylesheet" href="/assets/styles/planningTrip.css">
+    <link rel="stylesheet" href="/assets/styles/footer.css">
 
 
     <style>
@@ -29,6 +30,12 @@
         <!-- Home -->
         <%-include('components/home.ejs') %>
     </main>
+    <!-- Footer -->
+    <footer>
+        <%-include('components/footer.ejs', {
+            currentYear
+        }) %>
+    </footer>
 
     <!-- Script -->
     <script src="/assets/js/header.js"></script>

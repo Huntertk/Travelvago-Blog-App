@@ -1,0 +1,129 @@
+.footerMainSection {
+    background-color: #fff1ec;
+}
+.footerMainContainer {
+    padding: 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.footerSubConatiner .logoContainer {
+    width: 200px;
+}
+.footerSubConatiner .logoContainer img {
+    width: 100%;
+}
+.footerSubConatiner .socailIcons {
+    display: flex;
+    gap: 1rem;
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.footerSubConatiner .socailIcons svg {
+    transition: all linear 0.3s;
+    transform: scale(1);
+}
+.footerSubConatiner .socailIcons .instagram:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+}
+.footerSubConatiner .socailIcons .facebook:hover {
+    color: #3b5998;
+    transform: scale(1.2);
+}
+.footerSubConatiner .footerTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+.footerSubConatiner .linksContainer {
+    display: flex;
+    flex-direction: column;
+    color: #9b9b9b;
+}
+.footerSubConatiner .linksContainer a {
+    margin-top: 10px;
+}
+.footerSubConatiner .linksContainer a:hover {
+    text-decoration: underline;
+}
+.footerSubConatiner .linksContainer .active {
+    text-decoration: underline;
+    font-weight: 600;
+}
+.footerSubConatiner .contactDetailsContainer p {
+    color: #757575;
+    margin: 5px 0;
+    font-size: 1rem;
+}
+.footerSubConatiner .contactDetailsContainer .contactTitle {
+    font-size: 1.1rem;
+    color: #444444;
+    font-weight: 600;
+}
+.footerSubConatiner .contactDetailsContainer .email {
+    color: #f26823;
+}
+.footerSubConatiner .TA_certificateOfExcellence ul {
+    list-style: none;
+}
+.footerSubConatiner .TA_certificateOfExcellence ul img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+.copyRightMainContainer {
+    background-color: #f26823;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.copyRightMainContainer p {
+    font-size: 1.1rem;
+}
+@media screen and (min-width: 767px) {
+    .footerMainSection .footerMainContainer {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        justify-items: center;
+        margin: 1rem auto;
+        gap: 2rem;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .logoContainer {
+        width: 200px;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .logoContainer img {
+        width: 100%;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .socailIcons {
+        display: flex;
+        gap: 1rem;
+        font-size: 2rem;
+        margin-top: 10px;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .footerTitle {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .linksContainer {
+        display: flex;
+        flex-direction: column;
+        color: #9b9b9b;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .linksContainer a:hover {
+        text-decoration: underline;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .contactDetailsContainer p {
+        color: #757575;
+        margin: 5px 0;
+        font-size: 1rem;
+    }
+    .footerMainSection .footerMainContainer .footerSubConatiner .contactDetailsContainer .contactTitle {
+        font-size: 1.1rem;
+        color: var(--textColor);
+        font-weight: 600;
+    }
+}
