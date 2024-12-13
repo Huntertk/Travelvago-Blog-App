@@ -7,12 +7,25 @@ import authRouter from './routes/authRoutes';
 import userRouter from './routes/userRoutes';
 import productRouter from './routes/productRoutes';
 import orderRouter from './routes/orderRoutes';
+import viewRouter from './routes/viewRoutes';
 import path from 'path';
 
 
 //Express App Initialization
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
+
+// Specify the directory where your views are located
+app.set('views', path.join(__dirname,"..", 'views'));
+
+
+//Static Public Folder
+app.use(express.static(path.join(__dirname, "..", "public")))
+
 
 //Middleware
 app.use(express.json());
@@ -36,6 +49,8 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/product', productRouter);
 app.use('/api/v1/order', orderRouter);
+
+app.use('/', viewRouter);
 
 //Sending Frontend
 app.get('*', (req:Request, res:Response) => {
