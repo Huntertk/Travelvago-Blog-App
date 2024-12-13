@@ -55,6 +55,9 @@ header > .header_main_container > .nav_active {
 header > .header_main_container > .big_device_nav_links_container {
     display: none;
 }
+#closeIcon{
+    display: none;
+}
 
 @media screen and (min-width: 767px) {
     header > .header_main_container > .small_device_nav_links_container {
