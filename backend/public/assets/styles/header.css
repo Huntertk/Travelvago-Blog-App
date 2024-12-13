@@ -77,7 +77,7 @@ header > .header_main_container > .big_device_nav_links_container {
         transition: all 0.3s ease-in-out;
         font-weight: 400;
         position: relative;
-        color: var(--primary);
+        color: #f26823;
     }
     header > .header_main_container > .big_device_nav_links_container > a::after {
         content: "";
