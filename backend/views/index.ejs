@@ -6,11 +6,24 @@
     <title>Travelvago</title>
     <link rel="stylesheet" href="/assets/styles/index.css">
     <link rel="stylesheet" href="/assets/styles/header.css">
+    <link rel="stylesheet" href="/assets/styles/hero.css">
+
+
+    <style>
+        main{
+            max-width: 1100px;
+            margin: 1rem auto;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <%-include('components/header.ejs') %>
-
+    
+    <main>
+        <!-- Home -->
+        <%-include('components/home.ejs') %>
+    </main>
 
     <!-- Script -->
     <script src="/assets/js/header.js"></script>
