@@ -1,0 +1,15 @@
+<div class="recent_post_container">
+    <h3 style="
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5b5b5b;
+    ">Recent Posts</h3>
+    <div class="posts_container">
+        <!-- POST -->
+        <%let tempArr = Array.from({length:5})%>
+        <% tempArr.forEach((item) => { %>
+            <%-include('post.ejs')%>
+        <% }) %>
+        %>
+    </div>
+</div>
