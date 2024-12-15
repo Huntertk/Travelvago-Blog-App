@@ -8,12 +8,20 @@ import userRouter from './routes/userRoutes';
 import blogRouter from './routes/blogRoutes';
 import viewRouter from './routes/viewRoutes';
 import path from 'path';
+import {v2 as cloudinary} from 'cloudinary';
 
 
 //Express App Initialization
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+
+//Cloudinary Config
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
