@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header>
         <div className="header_main_container">
-            <div className="logo_component">
+            <div className="logo_component" onClick={() => window.location.href = "/"}>
                 <img src="/assets/images/tgvlogo.png" alt="Travelvago" />
             </div>
             
