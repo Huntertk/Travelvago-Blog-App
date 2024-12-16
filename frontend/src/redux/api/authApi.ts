@@ -19,14 +19,6 @@ export const authApi = createApi({
                     body
                 }
             },
-            async onQueryStarted ({}, {dispatch, queryFulfilled}) {
-                try {
-                    const {data} = await queryFulfilled
-                    dispatch(adminLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
-                } catch (error) {
-                    dispatch(adminLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
-                }
-            }
         }),
         getMeData: builder.query<TypeAdmin, {}>({
             query:() => '/admin/me',
