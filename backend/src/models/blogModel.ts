@@ -7,6 +7,8 @@ export type TypeBlog = {
     title:string;
     image:string;
     category:string;
+    subCategory:string;
+    summary:string;
     slug:string;
 }
 
@@ -24,7 +26,14 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required:true
       },
+      summary: {
+        type: String,
+        required:true
+      },
       category: {
+        type: String,
+      },
+      subCategory: {
         type: String,
       },
       slug: {

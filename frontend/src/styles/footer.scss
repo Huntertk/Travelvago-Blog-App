@@ -1,0 +1,174 @@
+@use './variable.scss' as *;
+
+.footerMainSection{
+    background-color: $primaryModalColor;
+    
+    .footerMainContainer{
+        
+        padding: 5rem 1rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .footerSubConatiner{
+
+            .logoContainer{
+                width: 200px;
+                img{
+                    width: 100%;
+                }
+            }
+
+            .socailIcons{
+                display: flex;
+                gap: 1rem;
+                font-size: 2rem;
+                margin-top: 10px;
+
+                svg{
+                    transition: all linear 0.3s;
+                    transform: scale(1);
+                }
+                
+                .instagram:hover{
+                    color: #ff0000;
+                    transform: scale(1.2);
+                }
+                .facebook:hover{
+                    color: #3b5998 ;
+                    transform: scale(1.2);
+                }
+            }
+
+            .footerTitle{
+                font-size: 1.3rem;
+                font-weight: 700;
+            }
+
+            .linksContainer{
+                display: flex;
+                flex-direction: column;
+                color: #9b9b9b;
+
+                a{
+                    margin-top: 10px;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                
+                .active{
+                    text-decoration: underline;
+                    font-weight: 600;
+                }
+            }
+
+            .contactDetailsContainer{
+                p{
+                    color: #757575;
+                    margin: 5px 0;
+                    font-size: 1rem;
+                }
+                .contactTitle{
+                    font-size: 1.1rem;
+                    color: $textColor;
+                    font-weight: 600;
+                }
+                .email{
+                    color: $primary;
+                }
+            }
+
+            .TA_certificateOfExcellence {
+                ul{
+                    list-style: none;
+                    img{
+                        width: 120px;
+                        height: 120px;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .copyRightMainContainer{
+        background-color: $primary;
+        color:#fff;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            font-size: 1.1rem;
+        }
+    }
+}
+
+
+@media screen and (min-width: 767px) {
+    .footerMainSection{
+        .footerMainContainer{
+            
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            justify-items: center;
+            margin: 1rem auto;
+            gap: 2rem;
+    
+            .footerSubConatiner{
+    
+                .logoContainer{
+                    width: 200px;
+                    img{
+                        width: 100%;
+                    }
+                }
+    
+                .socailIcons{
+                    display: flex;
+                    gap: 1rem;
+                    font-size: 2rem;
+                    margin-top: 10px;
+                }
+    
+                .footerTitle{
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                }
+    
+                .linksContainer{
+                    display: flex;
+                    flex-direction: column;
+                    color: #9b9b9b;
+    
+                    a{
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+    
+                .contactDetailsContainer{
+                    p{
+                        color: #757575;
+                        margin: 5px 0;
+                        font-size: 1rem;
+                    }
+                    .contactTitle{
+                        font-size: 1.1rem;
+                        color: $textColor;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    
+    
+        
+    }
+}
