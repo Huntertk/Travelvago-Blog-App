@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 
 // Define a type for the slice state
-type TypeUserState = {
+type TypeAdminState = {
     email:string|null;
     name:string|null;
     role:string|null;
@@ -12,7 +12,7 @@ type TypeUserState = {
 }
 
 // Define the initial state using that type
-const initialState: TypeUserState = {
+const initialState: TypeAdminState = {
     email:null,
     name:null,
     role:null,
@@ -20,13 +20,13 @@ const initialState: TypeUserState = {
 }
 
 
-export const userSlice = createSlice({
-    name: 'user',
+export const adminSlice = createSlice({
+    name: 'admin',
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
-        userLoginSuccess:(state, action: PayloadAction<{
+        adminLoginSuccess:(state, action: PayloadAction<{
             email:string|null;
             name:string|null;
             role:string|null;
@@ -41,5 +41,5 @@ export const userSlice = createSlice({
 })
 
 
-export const {userLoginSuccess} = userSlice.actions;
-export default userSlice.reducer;
+export const {adminLoginSuccess} = adminSlice.actions;
+export default adminSlice.reducer;

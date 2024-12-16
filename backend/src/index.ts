@@ -4,7 +4,7 @@ import errorHandler  from './middleware/errorMiddleware';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/authRoutes';
-import userRouter from './routes/userRoutes';
+import adminRouter from './routes/adminRoutes';
 import blogRouter from './routes/blogRoutes';
 import viewRouter from './routes/viewRoutes';
 import path from 'path';
@@ -49,7 +49,7 @@ app.get('/health', (req:Request, res:Response) => {
 
 //Api Routes
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/blog', blogRouter);
 app.use('/', viewRouter);
 

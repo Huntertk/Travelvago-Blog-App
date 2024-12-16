@@ -33,18 +33,17 @@ const Header = () => {
                     )
                 }
             </motion.div>
-               
             {
                 isNavOpen && (
                     <ul className="small_device_nav_links_container">
-                        <NavLink to="/" onClick={() => setIsNavOpen(false)}>Home</NavLink>
+                        <a href="/">Home</a>
                         <NavLink to="/blog" onClick={() => setIsNavOpen(false)}>Blogs</NavLink>
                         <NavLink to="/about" onClick={() => setIsNavOpen(false)}>About</NavLink>
                     </ul>
                 )
             }
             <ul className="big_device_nav_links_container">
-                <NavLink to="/">Home</NavLink>
+                <a href="/">Home</a>
                 <NavLink to="/blog">Blogs</NavLink>
                 <NavLink to="/about">About</NavLink>
             </ul>

@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import { userLoginSuccess } from '../features/userSlice';
-import { TypeUser } from '../typs';
+import { adminLoginSuccess } from '../features/adminSlice';
+import { TypeAdmin } from '../typs';
 
 
 
@@ -9,7 +9,7 @@ export const authApi = createApi({
     baseQuery:fetchBaseQuery({
         baseUrl:"/api/v1"
     }),
-    tagTypes:["getUser"],
+    tagTypes:["getAdmin"],
     endpoints:(builder) => ({
         login:builder.mutation<{email:string,name:string, password:string, role:string, _id:string}, {email:string, password:string}>({
             query:(body) => {
@@ -22,40 +22,23 @@ export const authApi = createApi({
             async onQueryStarted ({}, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(userLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
+                    dispatch(adminLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
                 } catch (error) {
-                    dispatch(userLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
+                    dispatch(adminLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
                 }
             }
         }),
-        register:builder.mutation<{email:string,name:string, password:string, role:string, _id:string}, {email:string, name:string; password:string}>({
-            query:(body) => {
-                return {
-                    url:"/auth/register",
-                    method:"POST",
-                    body
-                }
-            },
+        getMeData: builder.query<TypeAdmin, {}>({
+            query:() => '/admin/me',
             async onQueryStarted ({}, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(userLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
+                    dispatch(adminLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
                 } catch (error) {
-                    dispatch(userLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
-                }
-            }
-        }),
-        getMeData: builder.query<TypeUser, {}>({
-            query:() => '/users/me',
-            async onQueryStarted ({}, {dispatch, queryFulfilled}) {
-                try {
-                    const {data} = await queryFulfilled
-                    dispatch(userLoginSuccess({email:data.email,name:data.name, role:data.role, isAuthenticated:true}))
-                } catch (error) {
-                    dispatch(userLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
+                    dispatch(adminLoginSuccess({email:null,name:null, role:null, isAuthenticated:false}))
                 }
             },
-            providesTags:["getUser"]
+            providesTags:["getAdmin"]
         }),
         logout:builder.query({
             query:() => {
@@ -67,4 +50,4 @@ export const authApi = createApi({
     })
 })
 
-export const {useLoginMutation, useGetMeDataQuery, useLazyLogoutQuery, useRegisterMutation} = authApi
+export const {useLoginMutation, useGetMeDataQuery, useLazyLogoutQuery} = authApi
