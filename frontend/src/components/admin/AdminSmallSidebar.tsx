@@ -1,12 +1,9 @@
-import '../../styles/adminSmallSidebar.scss'
+import { ImCross } from 'react-icons/im'
+import { IoIosAddCircle } from 'react-icons/io'
+import { IoAnalytics } from 'react-icons/io5'
+import { RiAdminFill } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
-import {ImCross} from 'react-icons/im'
-import {RiAdminFill} from 'react-icons/ri'
-import {VscGraph} from 'react-icons/vsc'
-import { BsQrCode } from "react-icons/bs";
-import { IoCalendarNumberOutline } from 'react-icons/io5'
-import { MdAccessTime } from 'react-icons/md'
-import { CiSearch } from 'react-icons/ci'
+import '../../styles/adminSmallSidebar.scss'
 
 type TypeAdminSmallSidebarProps = {
     toggleSidebarHandler:(value:boolean) => void
@@ -19,26 +16,14 @@ const AdminSmallSidebar = ({toggleSidebarHandler}:TypeAdminSmallSidebarProps) =>
         <h1>Dashboard <RiAdminFill /></h1>
         <ImCross className='crossIcon' onClick={() => toggleSidebarHandler(false)}/>
           <NavLink 
-          to="/admin/all-booking"
+          to="/admin/dashboard"
           onClick={() => toggleSidebarHandler(false)}
-          ><VscGraph /> All Booking</NavLink>
+          ><IoAnalytics /> Dashboard</NavLink>
 
           <NavLink 
-          to="/admin/search"
+          to="/admin/add-new-blog"
           onClick={() => toggleSidebarHandler(false)}
-          ><CiSearch /> Search Booking</NavLink>
-
-          <NavLink to="/admin/manage-dates"
-           onClick={() => toggleSidebarHandler(false)}
-          ><IoCalendarNumberOutline /> Manages Dates</NavLink>
-
-          <NavLink to="/admin/manage-timeslot"
-           onClick={() => toggleSidebarHandler(false)}
-          ><MdAccessTime /> Manages Timeslot</NavLink>
-
-          <NavLink to="/admin/qr-code"
-          onClick={() => toggleSidebarHandler(false)}
-          ><BsQrCode /> Qr Codes</NavLink>
+          ><IoIosAddCircle /> Add New Blog</NavLink>
       </div>
     </div>
   )

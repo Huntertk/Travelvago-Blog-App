@@ -26,6 +26,7 @@ const App = () => {
          <Route element={<ProtectedRoute />}>
           <Route element={<AdminLayout />}>
             <Route path="/admin/dashboard" element={<h1>Dashboard</h1>} />
+            <Route path="/admin/add-new-blog" element={<h1>Add New Blog</h1>} />
           </Route>
          </Route>
         </Routes>
