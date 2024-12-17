@@ -5,11 +5,23 @@
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.blog_detials_container > h1{
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+.blog_detials_container > hr{
+  height: 2px;
+  width: 100%;
+  background-color: #bbb;
 }
 
 
 .blog_details_img_container{
-    width: 300px;
+  width: 300px;
+  margin: 1rem 0;
 }
 
 .blog_details_img_container > img{
@@ -20,18 +32,18 @@
 
 .blog_details_content_container p {
     margin-bottom: 0.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
   }
   
   .blog_details_content_container h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    font-family: sans-serif;
     margin: 1.5rem 0;
   }
   
   .blog_details_content_container h2 {
     font-size: 1.4rem;
-    font-family: sans-serif;
     margin: 1.5rem 0;
   }
   
