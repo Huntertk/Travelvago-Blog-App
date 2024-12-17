@@ -2,13 +2,17 @@ import React,{ useEffect, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import '../styles/addNewBlog.scss';
+import toast from 'react-hot-toast';
+import { useCreateBlogMutation } from '../redux/api/blogApi';
+import { VscLoading } from 'react-icons/vsc';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewBlog = () => {
-    const [content, setContent] = useState<string>('<h1>Write Blog Here....</h1>');
+    const [content, setContent] = useState<string>('<p>Write Blog Here....</p>');
     const editorRef = useRef<ReactQuill | null>(null);
-
+    const [createBlog, {isLoading:createBlogLoading, error:createBlogError, data:createBlogData}] = useCreateBlogMutation()
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
+    const navigate = useNavigate();
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [formData, setFormData] = useState<{
         title:string;
@@ -30,7 +34,6 @@ const AddNewBlog = () => {
             setImageUrl(blobUrl); 
         } 
     };
-    console.log(content);
 
     const handleFormDataChange = (event:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>{
         setFormData((prev) => (
@@ -41,13 +44,38 @@ const AddNewBlog = () => {
         ))
     }
 
+    const handleFormSubmit = () => {
+        if(!formData.category || !formData.subCategory || !formData.summary || !formData.title || !selectedFile || !content){
+            toast.error("Please provide all values")
+            return
+        }
+        const blogFormData:FormData = new FormData();
+        blogFormData.append('title', formData.title)
+        blogFormData.append('category', formData.category)
+        blogFormData.append('subCategory', formData.subCategory)
+        blogFormData.append('summary', formData.summary)
+        blogFormData.append('content', content)
+        blogFormData.append('image', selectedFile);
+        createBlog(blogFormData);
+    }
+
 
     useEffect(() => {
+        if(createBlogData){
+            toast.success("Blog Created")
+            navigate("/admin/dashboard")
+        }
 
         if(editorRef.current){
             editorRef.current.focus();
         }
-    },[])
+        if(createBlogError){
+            if ('data' in createBlogError) {
+              toast.error(`${createBlogError.data}`);
+            }
+        }
+
+    },[createBlogError, createBlogData])
 
     return (
         <div className='add_new_blog_container'>
@@ -101,7 +129,7 @@ const AddNewBlog = () => {
             <div className="add_new_blog_text_editor">
                 <ReactQuill theme="snow" value={content} ref={editorRef} onChange={setContent} />
             </div>
-            <button className='create_btn'>Create Blog</button>
+            <button className='create_btn' onClick={handleFormSubmit} disabled={createBlogLoading}>{createBlogLoading ? <VscLoading className='loading' /> : "Create Blog"}</button>
         </div>
     )
 }
