@@ -2,41 +2,51 @@
     <div class="featured_post_wrapper_one">
         <div class="featured_post">
             <div class="feature_post_img">
-                <img src="https://i.postimg.cc/tgFqQf44/pexels-pixabay-67559-1.jpg" alt="" />
+                <img src="<%=blogs[0].image%>" alt="<%=blogs[0].title%>" />
             </div>
             <div class="featured_post_content">
                 <div class="featured_post_time_category">
-                    <p>thailand</p>
-                    <p>1 hours ago</p>
+                    <p><%=blogs[0].category%></p>
+                    <p>
+                        <%=((new Date(Date.now()) - new Date(blogs[0].createdAt)) / (1000 * 60 * 60)).toFixed(0)%>
+                        hours ago
+                    </p>
                 </div>
-                <h1>9 Best Ways to Celebrate Summer in Thailand</h1>
+                <h1><%=blogs[0].title%></h1>
             </div>
         </div>
+        
     </div>
     <div class="featured_post_wrapper_two">
         <div class="featured_post">
             <div class="feature_post_img">
-                <img src="https://i.postimg.cc/W4B71NYb/pexels-pixabay-208444.jpg" alt="" />
+                <img src="<%=blogs[1].image%>" alt="<%=blogs[1].title%>" />
             </div>
             <div class="featured_post_content">
                 <div class="featured_post_time_category">
-                    <p>thailand</p>
-                    <p>1 hours ago</p>
+                    <p><%=blogs[1].category%></p>
+                    <p>
+                        <%=((new Date(Date.now()) - new Date(blogs[1].createdAt)) / (1000 * 60 * 60)).toFixed(0)%>
+                        hours ago
+                    </p>
                 </div>
-                <h1>9 Best Ways to Celebrate Summer in Thailand</h1>
+                <h1><%=blogs[1].title%></h1>
             </div>
         </div>
 
         <div class="featured_post">
             <div class="feature_post_img">
-                <img src="https://i.postimg.cc/W4B71NYb/pexels-pixabay-208444.jpg" alt="" />
+                <img src="<%=blogs[2].image%>" alt="<%=blogs[2].title%>" />
             </div>
             <div class="featured_post_content">
                 <div class="featured_post_time_category">
-                    <p>thailand</p>
-                    <p>1 hours ago</p>
+                    <p><%=blogs[2].category%></p>
+                    <p>
+                        <%=((new Date(Date.now()) - new Date(blogs[2].createdAt)) / (1000 * 60 * 60)).toFixed(0)%>
+                        hours ago
+                    </p>
                 </div>
-                <h1>9 Best Ways to Celebrate Summer in Thailand</h1>
+                <h1><%=blogs[2].title%></h1>
             </div>
         </div>
     </div>

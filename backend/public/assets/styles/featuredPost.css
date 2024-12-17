@@ -75,6 +75,10 @@
     .featured_post_container > .featured_post_wrapper_one > .featured_post > .featured_post_content > h1 {
         font-size: 1.3rem;
     }
+    .featured_post_container > .featured_post_wrapper_one > .featured_post > .feature_post_img > img {
+        object-fit: cover;
+        height: 350px;
+    }
     .featured_post_container > .featured_post_wrapper_two > .featured_post {
         display: flex;
         gap: 10px;

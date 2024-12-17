@@ -1,13 +1,18 @@
 import { NextFunction, Request, Response, Router } from "express";
+import Blog from "../models/blogModel";
 
 const router = Router();
 
-router.get('/', (req:Request, res:Response, next:NextFunction) => {
+router.get('/', async (req:Request, res:Response, next:NextFunction) => {
     try {
+        const blogs = await Blog.find();
+        console.log(blogs);
+        
         const currentYear = new Date(Date.now()).getFullYear();
         return res.render('index.ejs', {
             pageActive:"home",
-            currentYear
+            currentYear,
+            blogs
         })
     } catch (error) {
         return next(error);   
