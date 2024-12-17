@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/styles/header.css">
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <link rel="stylesheet" href="/assets/styles/blogDetails.css">
-
+    <link rel="stylesheet" href="/assets/styles/post.css">
 
     <style>
         main{
@@ -28,6 +28,12 @@
         <%-include('components/blogDetails.ejs', {
             blog
         })%>
+
+        <!-- Similar Post -->
+        <%-include('components/recentPost.ejs', {
+            blogs:randomBlog,
+            componentTitle:"Similar Post"
+        }) %>
        
     </main>
     <!-- Footer -->

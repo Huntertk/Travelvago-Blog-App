@@ -19,7 +19,8 @@ router.get('/', async (req:Request, res:Response, next:NextFunction) => {
 });
 router.get('/blog/:slug', async (req:Request, res:Response, next:NextFunction) => {
     try {
-        const params = req.params
+        const params = req.params;
+        const randomBlog = await Blog.aggregate([ { $sample: { size: 3 } } ]);
         const blog = await Blog.findOne({slug:params.slug});
         if(!blog){
             return res.redirect('/')
@@ -29,7 +30,8 @@ router.get('/blog/:slug', async (req:Request, res:Response, next:NextFunction) =
         return res.render('blogPage.ejs', {
             pageActive:"blog",
             currentYear,
-            blog
+            blog,
+            randomBlog
         })
     } catch (error) {
         return next(error);   
