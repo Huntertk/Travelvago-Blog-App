@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=blog.title%></title>
+    <link rel="stylesheet" href="/assets/styles/index.css">
+    <link rel="stylesheet" href="/assets/styles/header.css">
+    <link rel="stylesheet" href="/assets/styles/footer.css">
+    <link rel="stylesheet" href="/assets/styles/blogDetails.css">
+
+
+    <style>
+        main{
+            max-width: 1150px;
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <%-include('components/header.ejs', {
+        pageActive
+    }) %>
+    
+    <main>
+        <!-- Blog -->
+        <%-include('components/blogDetails.ejs', {
+            blog
+        })%>
+       
+    </main>
+    <!-- Footer -->
+    <footer>
+        <%-include('components/footer.ejs', {
+            currentYear
+        }) %>
+    </footer>
+
+    <!-- Script -->
+    <script src="/assets/js/header.js"></script>
+</body>
+</html>
