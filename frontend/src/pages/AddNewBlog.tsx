@@ -8,7 +8,7 @@ import { VscLoading } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 
 const AddNewBlog = () => {
-    const [content, setContent] = useState<string>('<p>Write Blog Here....</p>');
+    const [content, setContent] = useState<string>('');
     const editorRef = useRef<ReactQuill | null>(null);
     const [createBlog, {isLoading:createBlogLoading, error:createBlogError, data:createBlogData}] = useCreateBlogMutation()
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -127,7 +127,7 @@ const AddNewBlog = () => {
                 </select>
             </div>
             <div className="add_new_blog_text_editor">
-                <ReactQuill theme="snow" value={content} ref={editorRef} onChange={setContent} />
+                <ReactQuill theme="snow" value={content} ref={editorRef} onChange={setContent} placeholder='Write blog here....'/>
             </div>
             <button className='create_btn' onClick={handleFormSubmit} disabled={createBlogLoading}>{createBlogLoading ? <VscLoading className='loading' /> : "Create Blog"}</button>
         </div>
