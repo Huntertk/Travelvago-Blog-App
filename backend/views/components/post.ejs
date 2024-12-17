@@ -1,14 +1,17 @@
-<div class='post_container'>
+<a href="/blog/<%=item.slug%>" class='post_container'>
     <div class="post_img_container">
-        <img src="https://i.postimg.cc/tgFqQf44/pexels-pixabay-67559-1.jpg" alt="" />
+        <img src="<%=item.image%>" alt="<%=item.title%>" />
     </div>
     <div class="post_content_container">
         <div class="post_content_category_time_container">
-            <p>thailand</p>
-            <p>2 hours ago</p>
+            <p><%=item.category%></p>
+            <!-- <p>
+                <%=((new Date(Date.now()) - new Date(item.createdAt)) / (1000 * 60 * 60)).toFixed(0)%>
+                hours ago
+            </p> -->
         </div>
-        <h3>9 Best Ways to Celebrate Summer in Thailand</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, accusamus voluptate itaque dolore voluptates quibusdam perspiciatis optio sunt, odit velit dolores quis corrupti magni natus blanditiis labore! Molestias, voluptate ex.</p>
+        <h3><%=item.title%></h3>
+        <p><%=item.summary%></p>
         <p class='read_more'>Read More</p>
     </div>
-</div>
+</a>

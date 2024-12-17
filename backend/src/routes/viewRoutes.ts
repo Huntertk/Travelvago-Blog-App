@@ -6,7 +6,6 @@ const router = Router();
 router.get('/', async (req:Request, res:Response, next:NextFunction) => {
     try {
         const blogs = await Blog.find();
-        console.log(blogs);
         
         const currentYear = new Date(Date.now()).getFullYear();
         return res.render('index.ejs', {
