@@ -32,8 +32,17 @@
                 transform: scale(1.02);
             }
         }
+        > select{
+            background-color: transparent;
+        }
         > textarea{
             resize: none;
+        }
+    }
+    > .add_new_blog_text_editor {
+        > .textEditorQuill{
+            height: 200px;
+            margin-bottom: 2.5rem;
         }
     }
     > .create_btn{

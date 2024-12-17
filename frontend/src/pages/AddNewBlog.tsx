@@ -127,7 +127,7 @@ const AddNewBlog = () => {
                 </select>
             </div>
             <div className="add_new_blog_text_editor">
-                <ReactQuill theme="snow" value={content} ref={editorRef} onChange={setContent} placeholder='Write blog here....'/>
+                <ReactQuill className='textEditorQuill' theme="snow" value={content} ref={editorRef} onChange={setContent} placeholder='Write blog here....'/>
             </div>
             <button className='create_btn' onClick={handleFormSubmit} disabled={createBlogLoading}>{createBlogLoading ? <VscLoading className='loading' /> : "Create Blog"}</button>
         </div>
