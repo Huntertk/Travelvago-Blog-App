@@ -18,6 +18,10 @@
   background-color: #bbb;
 }
 
+.blog_detials_container > span {
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
 
 .blog_details_img_container{
   width: 300px;
