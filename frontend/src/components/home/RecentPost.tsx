@@ -1,4 +1,4 @@
-import Post from "../Post";
+// import Post from "../Post";
 import '../../styles/recentPost.scss';
 
 const RecentPost = () => {
@@ -6,11 +6,11 @@ const RecentPost = () => {
     <div className="recent_post_container">
         <h3>Recent Posts</h3>
         <div className="posts_container">
+            {/* <Post />
             <Post />
             <Post />
             <Post />
-            <Post />
-            <Post />
+            <Post /> */}
         </div>
     </div>
   )
