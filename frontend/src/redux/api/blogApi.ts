@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import { TypeBlog, TypeFilterBlog } from '../typs';
 
 
 
@@ -16,8 +17,23 @@ export const blogApi = createApi({
                     body
                 }
             },
-        })
+        }),
+        getBlogsByParams: builder.query<{blogs:TypeBlog[],totalPage:number}, TypeFilterBlog>({
+            query:(params) => {
+                return {
+                    url:"/blog",
+                    params:{
+                        featured:params.featured,
+                        category:params.category,
+                        subcategory:params.subCategory,
+                        search:params.search,
+                        sortby:params.sortby,
+                        page:params.page
+                    }
+                }
+            }
+        }),
     })
 })
 
-export const {useCreateBlogMutation} = blogApi;
+export const {useCreateBlogMutation, useGetBlogsByParamsQuery} = blogApi;

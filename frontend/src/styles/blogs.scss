@@ -1,0 +1,78 @@
+@use './variable.scss' as *;
+
+.blogs_page_main_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+   > .blogs_page_blogs_container{
+       > .blogs_page_search_sort_container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            > .search_container{
+                display: flex;
+                align-items: center;
+                border: 2px solid $primary;
+                border-radius: 14px;
+                padding: 5px;
+                > input{
+
+                    &:active,
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                > input, > button{
+                    background: transparent;
+                    border: none;
+                }
+                > button > svg {
+                    font-size: 1.5rem;
+                    color: $primary;
+                }
+
+            }
+            > .sort_container{
+                > select{
+                    background-color: transparent;
+                    padding: 10px;
+                    font-size: 1rem;
+                    border-radius: 14px;
+                }
+            }
+        }
+       > .blogs_page_product_container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        > .blogs_pagination_container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+
+@media screen and (min-width:767px) {
+    .blogs_page_main_container{
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 3rem;
+        
+        > .blogs_page_blogs_container{
+           > .blogs_page_product_container{
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
