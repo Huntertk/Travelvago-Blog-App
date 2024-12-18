@@ -5,6 +5,7 @@ import Blog, { type TypeBlog } from "../models/blogModel";
 import { generateSlug } from "../utils/generateSlug";
 import AppError from "../error/customError";
 import { uploadImage } from "../utils/uploadImage";
+import { TypeBaseQuery, type TypeBlogQuery } from "../utils/types";
 
 export const createNewBlog = async(req:Request, res:Response, next:NextFunction) => {
     try {
@@ -29,6 +30,63 @@ export const createNewBlog = async(req:Request, res:Response, next:NextFunction)
         //         console.log("Exception Occoured File Removed");
         //     })
         // }
+        return next(error);
+    }
+}
+
+//Get Blogs
+export const getBlogs = async(req:Request, res:Response, next:NextFunction) => {
+    const {search,category, sortby,subcategory, fields}:TypeBlogQuery = req.query;
+
+    const page:number = Number(req.query.page) || 1;
+    const limit:number = 10;
+    const skip:number = (page - 1) * limit;
+    const baseQuery:TypeBaseQuery = {}
+    let sort:string = "-createdAt";
+    let fieldsQuery:string = "-__v";
+
+    if(search){
+        baseQuery.title = {
+            $regex:search,
+            $options:"i"
+        }
+    }
+
+    if(subcategory){
+        baseQuery.subCategory = subcategory
+    }
+    if(category){
+        baseQuery.category = category
+    }
+
+    if(sortby){
+        sort = sortby
+    }
+
+    if(fields){
+        const formatField = fields.split(',').join(' ')
+        fieldsQuery = formatField
+    }
+    
+        
+    try{
+        const blogs = await Blog.find(baseQuery)
+        .sort(sort)
+        .limit(limit)
+        .skip(skip)
+        .select(fieldsQuery)
+
+        const filteredBlogs = await Blog.find(baseQuery);
+
+        const totalPage = Math.ceil(filteredBlogs.length / limit);
+
+        return res.status(200).json({
+            success:true,
+            totalPage,
+            totalResult:blogs.length,
+            blogs
+        })
+    } catch (error) {
         return next(error);
     }
 }
