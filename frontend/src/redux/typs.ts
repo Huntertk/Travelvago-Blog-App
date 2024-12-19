@@ -7,6 +7,7 @@ export type TypeAdmin = {
 }
 
 export type TypeBlog = {
+    _id:string;
     content:string;
     title:string;
     image:string;
@@ -17,7 +18,6 @@ export type TypeBlog = {
 }
 
 export type TypeFilterBlog = {
-    featured:boolean|undefined;
     category:string|undefined;
     subCategory:string|undefined;
     search:string|undefined;

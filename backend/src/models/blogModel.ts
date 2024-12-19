@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 
 
 export type TypeBlog = {
+    _id:string;
     content:string;
     title:string;
     image:string;

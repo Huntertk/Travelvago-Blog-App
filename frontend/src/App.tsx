@@ -10,6 +10,7 @@ const AdminLayout = lazy(() => import('./components/admin/AdminLayout'))
 const Blog = lazy(() => import('./pages/Blog'))
 const Login = lazy(() => import('./pages/Login'))
 const AddNewBlog = lazy(() => import('./pages/AddNewBlog'))
+const AllBlogs = lazy(() => import('./pages/AllBlogs'))
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
          <Route element={<ProtectedRoute />}>
           <Route element={<AdminLayout />}>
             <Route path="/admin/dashboard" element={<h1>Dashboard</h1>} />
+            <Route path="/admin/all-blogs" element={<AllBlogs/>} />
             <Route path="/admin/add-new-blog" element={<AddNewBlog/>} />
           </Route>
          </Route>

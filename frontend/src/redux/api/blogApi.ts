@@ -23,7 +23,6 @@ export const blogApi = createApi({
                 return {
                     url:"/blog",
                     params:{
-                        featured:params.featured,
                         category:params.category,
                         subcategory:params.subCategory,
                         search:params.search,

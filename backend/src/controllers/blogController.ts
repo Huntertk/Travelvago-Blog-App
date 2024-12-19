@@ -15,6 +15,11 @@ export const createNewBlog = async(req:Request, res:Response, next:NextFunction)
             return next(new AppError("Please provide all values", 400));
 
         }
+        const isTitleExist = await Blog.findOne({title:blogInputPyaload.title});
+        
+        if(isTitleExist){
+            return next(new AppError("Blog already created with this title", 400))
+        }
         const imageFile = req.file as Express.Multer.File;
         const imageUrl = await uploadImage(imageFile);
         // blogInputPyaload.image = path.join('/assets/images', imageFile.filename);

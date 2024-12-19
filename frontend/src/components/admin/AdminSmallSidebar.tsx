@@ -4,6 +4,7 @@ import { IoAnalytics } from 'react-icons/io5'
 import { RiAdminFill } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
 import '../../styles/adminSmallSidebar.scss'
+import { FaListCheck } from 'react-icons/fa6'
 
 type TypeAdminSmallSidebarProps = {
     toggleSidebarHandler:(value:boolean) => void
@@ -19,6 +20,11 @@ const AdminSmallSidebar = ({toggleSidebarHandler}:TypeAdminSmallSidebarProps) =>
           to="/admin/dashboard"
           onClick={() => toggleSidebarHandler(false)}
           ><IoAnalytics /> Dashboard</NavLink>
+
+          <NavLink 
+          to="/admin/all-blogs"
+          onClick={() => toggleSidebarHandler(false)}
+          ><FaListCheck /> All Blogs</NavLink>
 
           <NavLink 
           to="/admin/add-new-blog"

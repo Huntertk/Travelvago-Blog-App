@@ -25,7 +25,7 @@ const Blogs = () => {
   ];
   
   
-  const {data:filteredBlogData, isLoading:filteredBlogLoading} = useGetBlogsByParamsQuery({featured:undefined,category,subCategory, search, sortby, page});
+  const {data:filteredBlogData, isLoading:filteredBlogLoading} = useGetBlogsByParamsQuery({category,subCategory, search, sortby, page});
 
   
     const handleClickCategory = (categoryVal:string) => {
