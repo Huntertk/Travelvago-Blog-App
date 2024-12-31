@@ -1,7 +1,5 @@
 import React,{ useEffect, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import '../styles/addNewBlog.scss';
 import toast from 'react-hot-toast';
 import { useCreateBlogMutation } from '../redux/api/blogApi';
 import { useNavigate } from 'react-router-dom';

@@ -1,5 +1,7 @@
 import { VscLoading } from "react-icons/vsc";
 import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
+import '../../styles/addNewBlog.scss';
 
 type TypeBlogInputProps = {
     imageUrl:string|null;
