@@ -30,6 +30,7 @@ const App = () => {
             <Route path="/admin/dashboard" element={<h1>Dashboard</h1>} />
             <Route path="/admin/all-blogs" element={<AllBlogs/>} />
             <Route path="/admin/add-new-blog" element={<AddNewBlog/>} />
+            <Route path="/admin/blog/edit/:blogId" element={<AddNewBlog/>} />
           </Route>
          </Route>
         </Routes>

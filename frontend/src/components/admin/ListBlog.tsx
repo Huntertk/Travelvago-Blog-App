@@ -18,7 +18,7 @@ const ListBlog = ({category,image,subCategory,title, _id}:TypeListBlogProps) => 
         <p>{category}</p>
         <p>{subCategory}</p>
         <button onClick={() =>{console.log("delete")}}>Delete</button>
-        <button onClick={() => navigate(`/admin/blogs/edit/${_id}`)}>Edit</button>
+        <button onClick={() => navigate(`/admin/blog/edit/${_id}`)}>Edit</button>
     </div>
   )
 }
