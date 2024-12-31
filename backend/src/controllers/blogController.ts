@@ -4,7 +4,7 @@ import Blog, { type TypeBlog } from "../models/blogModel";
 // import { unlink } from "fs";
 import { generateSlug } from "../utils/generateSlug";
 import AppError from "../error/customError";
-import { uploadImage } from "../utils/uploadImage";
+import { deleteImage, uploadImage } from "../utils/uploadImage";
 import { TypeBaseQuery, type TypeBlogQuery } from "../utils/types";
 
 export const createNewBlog = async(req:Request, res:Response, next:NextFunction) => {
@@ -36,6 +36,64 @@ export const createNewBlog = async(req:Request, res:Response, next:NextFunction)
         //     })
         // }
         return next(error);
+    }
+}
+
+export const editBlog = async (req:Request, res:Response, next:NextFunction) => {
+    try {
+        const editBlogInputPayload:TypeBlog = req.body;
+        const imageFile = req.file as Express.Multer.File;
+        const blog = await Blog.findById(editBlogInputPayload._id);
+        if(!blog){
+            return next(new AppError("Blog Not Found with this id", 400))
+        }
+        if(imageFile){
+            const publicId = blog.image.split('/').pop()?.split('.')[0];
+            if(publicId){
+                await deleteImage(publicId)
+            }
+            const imageUrl = await uploadImage(imageFile);
+            blog.image = imageUrl;
+        }
+        if(editBlogInputPayload.category){
+            blog.category = editBlogInputPayload.category
+        }
+        if(editBlogInputPayload.subCategory){
+            blog.subCategory = editBlogInputPayload.subCategory
+        }
+        if(editBlogInputPayload.content){
+            blog.content = editBlogInputPayload.content
+        }
+        if(editBlogInputPayload.summary){
+            blog.summary = editBlogInputPayload.summary
+        }
+        if(editBlogInputPayload.title){
+            blog.title = editBlogInputPayload.title
+            blog.slug = generateSlug(editBlogInputPayload.title);
+        }
+        await blog.save();
+        return res.status(200).json({message:"blog updated"})
+    } catch (error) {
+        return next(error);
+    }
+}
+
+export const deleteBlog = async (req:Request, res:Response, next:NextFunction) => {
+    try {
+        const blogId:string = req.body.blogId;
+        const blog = await Blog.findById(blogId);
+
+        if(!blog){
+            return next(new AppError("Blog Not Found", 400))
+        }
+        const publicId = blog.image.split('/').pop()?.split('.')[0];
+        if(publicId){
+            await deleteImage(publicId)
+        }
+        await blog.deleteOne();
+        return res.status(200).json({message:"blog deleted"})
+    } catch (error) {
+        return next(error)
     }
 }
 

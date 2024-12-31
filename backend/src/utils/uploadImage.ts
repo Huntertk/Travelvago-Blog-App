@@ -6,3 +6,9 @@ export const uploadImage = async (imageFile: Express.Multer.File) => {
     const res = await cloudinary.v2.uploader.upload(dataURI);
     return res.secure_url;
 }
+
+export const deleteImage = async (url:string) => {
+    await cloudinary.v2.uploader.destroy(url)
+    console.log("image deleted");
+    
+}
