@@ -32,7 +32,23 @@ export const blogApi = createApi({
                 }
             }
         }),
+        getBlogByParams: builder.query<TypeBlog, {blogId:string|undefined}>({
+            query:(params) => {
+                return {
+                    url:`/blog/${params.blogId}`
+                }
+            }
+        }),
+        editBlog:builder.mutation<{message:string}, FormData>({
+            query:(body) => {
+                return {
+                    url:"/blog/edit",
+                    method:"POST",
+                    body
+                }
+            },
+        }),
     })
 })
 
-export const {useCreateBlogMutation, useGetBlogsByParamsQuery} = blogApi;
+export const {useCreateBlogMutation, useGetBlogsByParamsQuery, useGetBlogByParamsQuery, useEditBlogMutation} = blogApi;

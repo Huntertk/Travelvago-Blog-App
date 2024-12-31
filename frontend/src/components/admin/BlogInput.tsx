@@ -4,6 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import '../../styles/addNewBlog.scss';
 
 type TypeBlogInputProps = {
+    BtnText:string;
     imageUrl:string|null;
     content:string;
     createBlogLoading:boolean;
@@ -20,7 +21,7 @@ type TypeBlogInputProps = {
     handleFormSubmit:() => void;
 }
 
-const BlogInput = ({createBlogLoading,editorRef,setContent,content,imageUrl, formData,handleFileChange,handleFormDataChange,handleFormSubmit}:TypeBlogInputProps) => {
+const BlogInput = ({BtnText,createBlogLoading,editorRef,setContent,content,imageUrl, formData,handleFileChange,handleFormDataChange,handleFormSubmit}:TypeBlogInputProps) => {
   return (
     <div className='add_new_blog_container'>
             <div className="add_new_blog_image_upload">
@@ -73,7 +74,7 @@ const BlogInput = ({createBlogLoading,editorRef,setContent,content,imageUrl, for
             <div className="add_new_blog_text_editor">
                 <ReactQuill className='textEditorQuill' theme="snow" value={content} ref={editorRef} onChange={setContent} placeholder='Write blog here....'/>
             </div>
-            <button className='create_btn' onClick={handleFormSubmit} disabled={createBlogLoading}>{createBlogLoading ? <VscLoading className='loading' /> : "Create Blog"}</button>
+            <button className='create_btn' onClick={handleFormSubmit} disabled={createBlogLoading}>{createBlogLoading ? <VscLoading className='loading' /> : BtnText}</button>
         </div>
   )
 }

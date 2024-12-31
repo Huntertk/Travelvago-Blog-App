@@ -154,6 +154,22 @@ export const getBlogs = async(req:Request, res:Response, next:NextFunction) => {
     }
 }
 
+//get blog by id
+export const getBlog = async(req:Request, res:Response, next:NextFunction) => {
+    try {
+        const blogId:string = req.params.blogId;
+        const blog = await Blog.findById(blogId);
+
+        if(!blog){
+            return next(new AppError("No Blogs Found", 404))
+        }
+
+        return res.status(200).json(blog);
+    } catch (error) {
+        return next(error)
+    }
+} 
+
 //Demo Blog Creating Api
 export const insertNewBlog = async(req:Request, res:Response, next:NextFunction) => {
     try {

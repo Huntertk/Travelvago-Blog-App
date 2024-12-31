@@ -1,14 +1,24 @@
 import React,{ useEffect, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
 import toast from 'react-hot-toast';
-import { useCreateBlogMutation } from '../redux/api/blogApi';
-import { useNavigate } from 'react-router-dom';
+import { useEditBlogMutation, useGetBlogByParamsQuery } from '../redux/api/blogApi';
+import { useNavigate, useParams } from 'react-router-dom';
 import BlogInput from '../components/admin/BlogInput';
+import Loader from '../components/Loader';
 
-const AddNewBlog = () => {
+const EditBlog = () => {
+    const {blogId} = useParams();
+    if(!blogId){
+        window.location.href = "/admin/dashboard"
+        return 
+    }
+    
+    const {data:getBlogData, isLoading:getBlogLoading, error:getBlogError} = useGetBlogByParamsQuery({blogId});
+    
     const [content, setContent] = useState<string>('');
     const editorRef = useRef<ReactQuill | null>(null);
-    const [createBlog, {isLoading:createBlogLoading, error:createBlogError, data:createBlogData}] = useCreateBlogMutation()
+    const [editBlog, {isLoading:editBlogLoading, error:editBlogError, data:editBlogData}] = useEditBlogMutation();
+
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const navigate = useNavigate();
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -43,45 +53,62 @@ const AddNewBlog = () => {
     }
 
     const handleFormSubmit = () => {
-        if(!formData.category || !formData.subCategory || !formData.summary || !formData.title || !selectedFile || !content){
+        if(!formData.category || !formData.subCategory || !formData.summary || !formData.title || !content){
             toast.error("Please provide all values")
             return
         }
         const blogFormData:FormData = new FormData();
+        if(getBlogData?._id){
+            blogFormData.append("_id", getBlogData._id)
+        }
         blogFormData.append('title', formData.title)
         blogFormData.append('category', formData.category)
         blogFormData.append('subCategory', formData.subCategory)
         blogFormData.append('summary', formData.summary)
         blogFormData.append('content', content)
-        blogFormData.append('image', selectedFile);
-        createBlog(blogFormData);
+        if(selectedFile){
+            blogFormData.append('image', selectedFile);
+        }
+        editBlog(blogFormData);
     }
 
 
     useEffect(() => {
-        if(createBlogData){
-            toast.success("Blog Created")
+        if(getBlogData){
+            setContent(getBlogData.content)
+            setFormData({title:getBlogData.title, category:getBlogData.category, subCategory: getBlogData.subCategory,  summary:getBlogData.summary})
+            setImageUrl(getBlogData.image)
+        }
+
+        if(editBlogData){
+            toast.success("Blog Updated")
+            navigate("/admin/dashboard")
+        }
+        if(getBlogError){
             navigate("/admin/dashboard")
         }
 
         if(editorRef.current){
             editorRef.current.focus();
         }
-        if(createBlogError){
-            if ('data' in createBlogError) {
-              toast.error(`${createBlogError.data}`);
+        if(editBlogError){
+            if ('data' in editBlogError) {
+              toast.error(`${editBlogError.data}`);
             }
         }
 
-    },[createBlogError, createBlogData])
+    },[editBlogError, editBlogData, getBlogError, getBlogData])
+
+    if(getBlogLoading){
+        return <Loader />
+    }
 
     return (
         <>
-        <h1>Create New Blog</h1>
+        <h1>Edit Blog</h1>
         <BlogInput 
-            BtnText={"Create Blog"}
             content={content}
-            createBlogLoading={createBlogLoading}
+            createBlogLoading={editBlogLoading}
             editorRef={editorRef}
             formData={formData}
             handleFileChange={handleFileChange}
@@ -89,9 +116,10 @@ const AddNewBlog = () => {
             handleFormSubmit={handleFormSubmit}
             imageUrl={imageUrl}
             setContent={setContent}
-        />
+            BtnText='Update Blog'
+            />
         </>
     )
 }
 
-export default AddNewBlog
+export default EditBlog

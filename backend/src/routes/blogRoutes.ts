@@ -2,7 +2,7 @@
 import { Router } from "express";
 import multer from "multer";
 // import path from "path";
-import { createNewBlog, deleteBlog, editBlog, getBlogs, insertNewBlog } from "../controllers/blogController";
+import { createNewBlog, deleteBlog, editBlog, getBlog, getBlogs, insertNewBlog } from "../controllers/blogController";
 import { authorizeRoles, authUser } from "../middleware/authMiddleware";
 
 const router = Router();
@@ -51,6 +51,12 @@ router.post('/delete',
 
 router.get('/',
     getBlogs
+)
+
+router.get('/:blogId',
+    authUser,
+    authorizeRoles('admin'),
+    getBlog
 )
 
 router.post('/create',

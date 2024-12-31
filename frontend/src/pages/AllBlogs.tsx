@@ -39,7 +39,7 @@ const AllBlogs = () => {
           <option value="">Select Category</option>
           {
             categoryFilterList.map((cat) => (
-              <option value={cat}>{cat}</option>
+              <option key={cat} value={cat}>{cat}</option>
             ))
           }
         </select>
@@ -47,7 +47,7 @@ const AllBlogs = () => {
           <option value="">Select Sub Category</option>
           {
             subCategoryFilterList.map((subcat) => (
-              <option value={subcat}>{subcat}</option>
+              <option key={subcat} value={subcat}>{subcat}</option>
             ))
           }
         </select>
