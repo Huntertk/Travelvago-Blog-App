@@ -48,7 +48,22 @@ export const blogApi = createApi({
                 }
             },
         }),
+        deleteBlog:builder.mutation<{message:string}, {blogId:string;}>({
+            query:(body) => {
+                return {
+                    url:"/blog/delete",
+                    method:"POST",
+                    body
+                }
+            },
+        }),
     })
 })
 
-export const {useCreateBlogMutation, useGetBlogsByParamsQuery, useGetBlogByParamsQuery, useEditBlogMutation} = blogApi;
+export const {
+    useCreateBlogMutation,
+    useGetBlogsByParamsQuery,
+    useGetBlogByParamsQuery,
+    useEditBlogMutation,
+    useDeleteBlogMutation
+} = blogApi;
