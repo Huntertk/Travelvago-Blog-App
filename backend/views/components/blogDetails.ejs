@@ -1,7 +1,12 @@
 <div class="blog_detials_container">
     <h1><%=blog.title%></h1>
     <hr>
-    <span><%=blog.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })%></span>
+    <%const totalReadTime = Math.ceil(blog.content.length / 250); %>
+    <div class="blog_details_info_wrapper">
+        <span><%=blog.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })%></span>
+        
+        <span><%=totalReadTime%> min read</span>
+    </div>
     <div class="blog_details_img_container">
         <img src="<%=blog.image%>" alt="<%=blog.title%>">
     </div>

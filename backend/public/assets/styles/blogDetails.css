@@ -11,6 +11,8 @@
 .blog_detials_container > h1{
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  line-height: 1.6;
+  word-spacing: 1px;
 }
 .blog_detials_container > hr{
   height: 2px;
@@ -18,8 +20,14 @@
   background-color: #bbb;
 }
 
-.blog_detials_container > span {
-  align-self: flex-start;
+.blog_details_info_wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+}
+.blog_details_info_wrapper > span {
   font-size: 0.8rem;
 }
 
@@ -75,6 +83,9 @@
     .blog_details_img_container{
         width: 450px;
         height: 450px;
+    }
+    .blog_detials_container > h1{
+      font-size: 2rem;
     }
   }
 
