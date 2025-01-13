@@ -39,4 +39,17 @@ router.get('/blog/:slug', async (req:Request, res:Response, next:NextFunction) =
     }
 });
 
+router.get('/about', async (req:Request, res:Response, next:NextFunction) => {
+    try {
+        const currentYear = new Date(Date.now()).getFullYear();
+        return res.render('aboutPage.ejs', {
+            pageActive:"about",
+            currentYear,
+            pageTitle:"About Us"
+        })
+    } catch (error) {
+        return next(error);   
+    }
+});
+
 export default router;

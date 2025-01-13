@@ -38,14 +38,14 @@ const Header = () => {
                     <ul className="small_device_nav_links_container">
                         <a href="/">Home</a>
                         <NavLink to="/blog" onClick={() => setIsNavOpen(false)}>Blogs</NavLink>
-                        <NavLink to="/about" onClick={() => setIsNavOpen(false)}>About</NavLink>
+                        <a href="/about">About</a>
                     </ul>
                 )
             }
             <ul className="big_device_nav_links_container">
                 <a href="/">Home</a>
                 <NavLink to="/blog">Blogs</NavLink>
-                <NavLink to="/about">About</NavLink>
+                <a href="/about">About</a>
             </ul>
         </div>
     </header>
