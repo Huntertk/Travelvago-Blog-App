@@ -1,10 +1,13 @@
 import { NextFunction, Request, Response } from "express";
 import Blog, { type TypeBlog } from "../models/blogModel";
-// import path from "path";
-// import { unlink } from "fs";
+import path from "path";
+import { unlink } from "fs";
 import { generateSlug } from "../utils/generateSlug";
 import AppError from "../error/customError";
-import { deleteImage, uploadImage } from "../utils/uploadImage";
+// import {
+//     deleteImage,
+//     uploadImage 
+// } from "../utils/uploadImage";
 import { TypeBaseQuery, type TypeBlogQuery } from "../utils/types";
 
 export const createNewBlog = async(req:Request, res:Response, next:NextFunction) => {
@@ -21,20 +24,20 @@ export const createNewBlog = async(req:Request, res:Response, next:NextFunction)
             return next(new AppError("Blog already created with this title", 400))
         }
         const imageFile = req.file as Express.Multer.File;
-        const imageUrl = await uploadImage(imageFile);
-        // blogInputPyaload.image = path.join('/assets/images', imageFile.filename);
-        blogInputPyaload.image = imageUrl;
+        // const imageUrl = await uploadImage(imageFile);
+        // blogInputPyaload.image = imageUrl;
+        blogInputPyaload.image = path.join('/assets/images', imageFile.filename);
         blogInputPyaload.slug = generateSlug(blogInputPyaload.title);
         await Blog.create(blogInputPyaload);
         return res.status(200).json({
             message: 'Blog Created Successfully'
         });
     } catch (error) {
-        // if(req.file){
-        //     unlink(req.file.path, () => {
-        //         console.log("Exception Occoured File Removed");
-        //     })
-        // }
+        if(req.file){
+            unlink(req.file.path, () => {
+                console.log("Exception Occoured File Removed");
+            })
+        }
         return next(error);
     }
 }
@@ -48,12 +51,13 @@ export const editBlog = async (req:Request, res:Response, next:NextFunction) => 
             return next(new AppError("Blog Not Found with this id", 400))
         }
         if(imageFile){
-            const publicId = blog.image.split('/').pop()?.split('.')[0];
-            if(publicId){
-                await deleteImage(publicId)
-            }
-            const imageUrl = await uploadImage(imageFile);
-            blog.image = imageUrl;
+            // const publicId = blog.image.split('/').pop()?.split('.')[0];
+            // if(publicId){
+            //     await deleteImage(publicId)
+            // }
+            // const imageUrl = await uploadImage(imageFile);
+            // blog.image = imageUrl;
+            blog.image = path.join('/assets/images', imageFile.filename);
         }
         if(editBlogInputPayload.category){
             blog.category = editBlogInputPayload.category
@@ -86,10 +90,10 @@ export const deleteBlog = async (req:Request, res:Response, next:NextFunction) =
         if(!blog){
             return next(new AppError("Blog Not Found", 400))
         }
-        const publicId = blog.image.split('/').pop()?.split('.')[0];
-        if(publicId){
-            await deleteImage(publicId)
-        }
+        // const publicId = blog.image.split('/').pop()?.split('.')[0];
+        // if(publicId){
+        //     await deleteImage(publicId)
+        // }
         await blog.deleteOne();
         return res.status(200).json({message:"blog deleted"})
     } catch (error) {
