@@ -11,7 +11,9 @@ router.get('/', async (req:Request, res:Response, next:NextFunction) => {
         return res.render('index.ejs', {
             pageActive:"home",
             currentYear,
-            blogs
+            blogs,
+            title:"Travelvago Blog",
+            description:"Find the best travel deals on Travelvago. Explore top destinations, and plan your dream vacation with us!"
         })
     } catch (error) {
         return next(error);   
@@ -32,7 +34,9 @@ router.get('/blog/:slug', async (req:Request, res:Response, next:NextFunction) =
             pageActive:"blog",
             currentYear,
             blog,
-            randomBlog:randomBlog.slice(0,3)
+            randomBlog:randomBlog.slice(0,3),
+            title:blog.title,
+            description:blog.summary
         })
     } catch (error) {
         return next(error);   
